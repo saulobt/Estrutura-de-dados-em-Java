@@ -1,0 +1,3 @@
+https://docs.oracle.com/javase/tutorial/extra/generics/wildcards.html
+refatorando nossa classe Nó para aceitar qualquer objeto.
+e não só <String> mas im um generic <T> type pela convenção java!
