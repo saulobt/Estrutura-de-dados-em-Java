@@ -18,7 +18,6 @@ public class Main {
         System.out.println(no1.getProximoNo().getProximoNo());
         System.out.println(no1.getProximoNo().getProximoNo().getProximoNo());
         System.out.println(no1.getProximoNo().getProximoNo().getProximoNo().getProximoNo());
-
         // no 1 aponta para no 2 > no 3 > no 4 que aponta para null, fim.
     }
 }
