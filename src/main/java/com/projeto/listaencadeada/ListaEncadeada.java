@@ -49,6 +49,10 @@ public class ListaEncadeada<T> {
 
     }
 
+    public T get(int index) {
+        return getNo(index).getConteudo();
+    }
+
     private No<T> getNo(int index) {
 
         validaIndex(index);
