@@ -75,4 +75,16 @@ public class ListaEncadeada<T> {
                     " no index" + index + "");
         }
     }
+
+    public T remove(int index) {
+        No<T> noPivor = getNo(index);
+        if (index == 0) {
+            referenciaEntrada = noPivor.getProximoNo();
+            return noPivor.getConteudo();
+        }
+
+        No<T> noAnterior = getNo(index - 1);
+        noAnterior.setProximoNo(noPivor.getProximoNo());
+        return noPivor.getConteudo();
+    }
 }
