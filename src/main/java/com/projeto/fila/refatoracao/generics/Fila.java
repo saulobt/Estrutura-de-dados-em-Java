@@ -1,7 +1,7 @@
-package com.projeto.fila.refatoracao;
+package com.projeto.fila.refatoracao.generics;
 
-public class Fila {
-    private No referenciaNoEntradaFila;
+public class Fila<T> {
+    private No<T> referenciaNoEntradaFila;
 
     public Fila() {
         this.referenciaNoEntradaFila = null;
@@ -11,13 +11,13 @@ public class Fila {
         return referenciaNoEntradaFila == null ? true:false;
     }
 
-    public void enqueue(Object obj){
-        No novoNo = new No(obj);
+    public void enqueue(T object){
+        No novoNo = new No(object);
         novoNo.setReferenciaProximoNo(referenciaNoEntradaFila);
         referenciaNoEntradaFila = novoNo;
     }
 
-    public Object fisrt(){
+    public T fisrt(){
         if (!isEmpty()){
             No primeiroNo = referenciaNoEntradaFila;
             while (true){
@@ -27,12 +27,12 @@ public class Fila {
                     break;
                 }
             }
-            return primeiroNo.getObjeto();
+            return (T) primeiroNo.getObject();
         }
         return null;
     }
 
-    public No dequeue(){
+    public T dequeue(){
         if (!isEmpty()){
             No primeiroNo = referenciaNoEntradaFila;
             No noAuxiliar = referenciaNoEntradaFila;
@@ -45,7 +45,7 @@ public class Fila {
                     break;
                 }
             }
-            return primeiroNo;
+            return (T) primeiroNo.getObject();
         }
         return null;
     }
@@ -60,7 +60,7 @@ public class Fila {
         body.append(cabecalho);
         if (referenciaNoEntradaFila != null){
             while (true){
-                body.append("[No{Object="+noAuxiliar.getObjeto()+"}]--->");
+                body.append("[No{Object="+noAuxiliar.getObject()+"}]--->");
                 if (noAuxiliar.getReferenciaProximoNo() != null){//verifica se tem so um no...
                     noAuxiliar = noAuxiliar.getReferenciaProximoNo();
                 } else {

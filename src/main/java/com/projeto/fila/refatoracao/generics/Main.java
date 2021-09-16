@@ -1,15 +1,14 @@
-package com.projeto.fila.refatoracao;
+package com.projeto.fila.refatoracao.generics;
 
-
-import com.projeto.fila.refatoracao.generics.Fila;
 
 public class Main {
     public static void main(String[] args) {
-        Fila minhafila = new Fila();
+        Fila<String> minhafila = new Fila<>();
         minhafila.enqueue("primeiro");
         minhafila.enqueue("segundo");
         minhafila.enqueue("terceiro");
         minhafila.enqueue("quarto");
+        //minhafila.enqueue(1);
 
         System.out.println(""+minhafila);
         System.out.println("Pegando o Primeiro Nó: "+minhafila.dequeue());
