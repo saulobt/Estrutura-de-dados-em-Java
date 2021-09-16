@@ -89,6 +89,14 @@ public class ListaEncadeada<T> {
         return noPivor.getConteudo();
     }
 
+    public No<T> getReferenciaEntrada() {
+        return referenciaEntrada;
+    }
+
+    public void setReferenciaEntrada(No<T> referenciaEntrada) {
+        this.referenciaEntrada = referenciaEntrada;
+    }
+
     @Override
     public String toString() {
         StringBuffer cabecalho = new StringBuffer();
