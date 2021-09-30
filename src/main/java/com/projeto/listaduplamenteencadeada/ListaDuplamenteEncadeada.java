@@ -63,4 +63,44 @@ public class ListaDuplamenteEncadeada<T> {
         }
         tamanhoLista++;
     }
+
+    public void remove(int index) {
+
+        if (index == 0) {
+            primeiroNo = primeiroNo.getProximoNo();
+            if (primeiroNo != null) {
+                primeiroNo.setNoAnterior(null);
+            }
+
+        } else {
+            NoDuplo<T> noAuxiliar = getNo(index);
+            noAuxiliar.getNoAnterior().setProximoNo(noAuxiliar.getProximoNo());
+            if (noAuxiliar != ultimoNo) {
+                noAuxiliar.getProximoNo().setNoAnterior(noAuxiliar.getNoAnterior());
+            } else {
+                ultimoNo = noAuxiliar;
+            }
+        }
+        tamanhoLista--;
+    }
+
+    @Override
+    public String toString() {
+
+        StringBuffer cabecalho = new StringBuffer();
+        cabecalho.append("===LISTA DUPLAMENTE ENCADEADA===\n");
+        StringBuffer body = new StringBuffer();
+        body.append(cabecalho);
+
+        NoDuplo<T> noAuxiliar = primeiroNo;
+
+
+        for (int i = 0; i < size(); i++) {
+            body.append("[No{conteúdo=" + noAuxiliar.getConteudo() + "}]--->");
+            noAuxiliar = noAuxiliar.getProximoNo();
+        }
+        body.append("null");
+        body.append("\n=========FIM=========");
+        return body.toString();
+    }
 }
