@@ -1,6 +1,7 @@
 package com.projeto.listaduplamenteencadeada;
 
-public class ListaDuplamenteEncadeada {
+
+public class ListaDuplamenteEncadeada<T> {
     private NoDuplo<T> primeiroNo;
     private NoDuplo<T> ultimoNo;
     private int tamanhoLista;
@@ -42,7 +43,24 @@ public class ListaDuplamenteEncadeada {
         tamanhoLista++;
     }
 
-    public void add(int index, T Element) {
+    public void add(int index, T elemento) {
+        NoDuplo<T> noAuxiliar = getNo(index);
+        NoDuplo<T> novoNo = new NoDuplo<T>(elemento);
+        novoNo.setProximoNo(noAuxiliar);
 
+        if (novoNo.getProximoNo() != null) {
+            novoNo.setNoAnterior(noAuxiliar.getNoAnterior());
+            novoNo.getProximoNo().setProximoNo(novoNo);
+        } else {
+            novoNo.setNoAnterior(ultimoNo);
+            ultimoNo = novoNo;
+        }
+
+        if (index == 0) {
+            primeiroNo = novoNo;
+        } else {
+            novoNo.getNoAnterior().setProximoNo(novoNo);
+        }
+        tamanhoLista++;
     }
 }
